@@ -40,7 +40,7 @@ with open("model.pkcls","rb") as model:
 ########################  CACHE FUNCTION  #############################
 
 
-@st.cache
+#@st.cache
 def get_data():
     df = pd.read_csv("datax.csv")
     return df
