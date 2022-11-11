@@ -86,9 +86,11 @@ def get_user_input():
 
     domain = Orange.data.Domain([pp,lokasi,waktu,utang]) 
 
+    loe = [[pp_val, lokasi_val, waktu_val, utang_val]]
+
     # in this format, the data is now ready to be fed to StackModel
-    user_input = Orange.data.Table.from_domain(domain)
-    return waktu_val;
+    user_input = Orange.data.Table.from_domain(domain, loe)
+    return user_input;
 
 
 df_userinput = get_user_input()
