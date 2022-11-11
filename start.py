@@ -91,7 +91,7 @@ def get_user_input():
     X = np.array([[0,0,0,"lolol"]])
 
     # in this format, the data is now ready to be fed to StackModel
-    user_input = Orange.data.Table(domain)
+    user_input = Orange.data.Table(domain,X)
 
     return user_input
 
