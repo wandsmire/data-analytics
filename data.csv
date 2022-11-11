@@ -1,4 +1,4 @@
-﻿LEMBAGA (PENYERAH PIUTANG);LOKASI;STATUS;TAHAP SIMPEL;KATEGORI WAKTU;NILAIUTANG
+﻿PENYERAH_PIUTANG;LOKASI;STATUS;TAHAP_SIMPEL;WAKTU;UTANG
 029 - Kementerian Kehutanan;Luar Kota;Tidak Aktif;Tidak Potensial;>10th;8-50jt
 059 - Kementerian Komunikasi dan Informatika;Dalam Kota;Tidak Aktif;Tidak Potensial;5-10th;<8jt
 1001 - Pemda;Dalam Kota;Tidak Aktif;Tidak Potensial;1-5th;<8jt

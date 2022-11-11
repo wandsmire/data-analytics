@@ -63,7 +63,7 @@ def get_user_input():
     df = get_data()
     data_pp = np.array(df["LEMBAGA (PENYERAH PIUTANG)"])
     pp_sorted = np.unique(data_pp)    
-    pp_val = sd_bar.selectbox(label = "LEMBAGA (PENYERAH PIUTANG)", options = pp_sorted, index = 0)
+    pp_val = sd_bar.selectbox(label = "PENYERAH_PIUTANG", options = pp_sorted, index = 0)
 
     data_lokasi = np.array(df["LOKASI"])
     lokasi_sorted = np.unique(data_lokasi)    
@@ -71,17 +71,17 @@ def get_user_input():
 
     data_waktu = np.array(df["KATEGORI WAKTU"])
     waktu_sorted = np.unique(data_waktu)    
-    waktu_val = sd_bar.selectbox(label = "KATEGORI WAKTU", options = waktu_sorted, index = 0)
+    waktu_val = sd_bar.selectbox(label = "WAKTU", options = waktu_sorted, index = 0)
 
     data_utang = np.array(df["NILAI UTANG"])
     utang_sorted = np.unique(data_utang)    
-    utang_val = sd_bar.selectbox(label = "NILAI UTANG", options = utang_sorted, index = 0)
+    utang_val = sd_bar.selectbox(label = "UTANG", options = utang_sorted, index = 0)
 
     # define Orange domain
-    pp = Orange.data.DiscreteVariable("LEMBAGA (PENYERAH PIUTANG)",[pp_val])
+    pp = Orange.data.DiscreteVariable("PENYERAH_PIUTANG",[pp_val])
     lokasi = Orange.data.DiscreteVariable("LOKASI",[lokasi_val])
-    waktu = Orange.data.DiscreteVariable("KATEGORI WAKTU",[waktu_val])
-    utang = Orange.data.DiscreteVariable("NILAI UTANG",[utang_val])
+    waktu = Orange.data.DiscreteVariable("WAKTU",[waktu_val])
+    utang = Orange.data.DiscreteVariable("UTANG",[utang_val])
     domain = Orange.data.Domain([pp,lokasi,waktu,utang]) 
 
     # input values X
