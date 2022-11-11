@@ -61,7 +61,7 @@ with sd_bar:
 def get_user_input():
 
     df = get_data()
-    data_pp = np.array(df["PENYERAH_PIUTANG"])
+    data_pp = np.array(df["penyerah_piutang"])
     #pp_sorted = np.unique(data_pp)    
     #pp_val = sd_bar.selectbox(label = "PENYERAH_PIUTANG", options = pp_sorted, index = 0)
 
