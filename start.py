@@ -61,7 +61,6 @@ with sd_bar:
 def get_user_input():
 
     df = get_data()
-    #st.markdown(list(df.columns))
 
     data_pp = np.array(df["PENYERAH_PIUTANG"])
     pp_sorted = np.unique(data_pp)    
@@ -89,7 +88,7 @@ def get_user_input():
     domain = Orange.data.Domain([pp,lokasi,waktu,utang]) 
 
     # input values X
-    X = np.array([[1,2,3,3]])
+    X = np.array([[pp_val,lokasi_val,waktu_val,utang_val]])
 
     # in this format, the data is now ready to be fed to StackModel
     user_input = Orange.data.Table(domain, X)
