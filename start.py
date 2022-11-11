@@ -88,7 +88,7 @@ def get_user_input():
 
     # in this format, the data is now ready to be fed to StackModel
     user_input = Orange.data.Table.from_domain(domain)
-    return user_input
+    return waktu_val;
 
 
 df_userinput = get_user_input()
@@ -99,7 +99,7 @@ df_userinput = get_user_input()
 with header_cont:
     st.markdown("# Prediksi Potensi Berkas Kasus Piutang Negara pada Kanwil DJKN Papua, Papua Barat, dan Maluku")
     st.markdown("Prediksi ini merupakan implementasi penggunaan machine learning secara sederhana.")
-    st.markdown(waktu_val)
+    st.markdown(df_userinput)
 
 
 
