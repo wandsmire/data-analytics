@@ -120,6 +120,7 @@ with dataset_cont:
     df = get_data()
     df.drop(df.columns[[2, 3]], axis=1, inplace=True)
     st.dataframe(df)
+    df_userinput.dataframe(df)
 
 #########   FEATURES  ##################################
 
