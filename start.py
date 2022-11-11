@@ -42,7 +42,7 @@ with open("model.pkcls","rb") as model:
 
 @st.cache
 def get_data():
-    df = pd.read_csv("data.csv")
+    df = pd.read_csv("datax.csv")
     return df
 
 
