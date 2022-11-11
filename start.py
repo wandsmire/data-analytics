@@ -61,54 +61,31 @@ with sd_bar:
 def get_user_input():
 
     df = get_data()
-    states = np.array(df["state"])
-    states_sorted = np.unique(states)
-    
-    state_val = sd_bar.selectbox(label = "State", options = states_sorted, index = 0)
-    intplan_val = sd_bar.selectbox(label = "International plan", options = ["no", "yes"], index = 0)
-    voiceplan_val = sd_bar.selectbox(label = "Voice mail plan", options = ["no", "yes"], index = 0)
+    data_pp = np.array(df["LEMBAGA (PENYERAH PIUTANG)"])
+    pp_sorted = np.unique(data_pp)    
+    pp_val = sd_bar.selectbox(label = "LEMBAGA (PENYERAH PIUTANG)", options = pp_sorted, index = 0)
 
-    numvmailmsgs_val = sd_bar.slider(label = "Number of voice mail messages", min_value = 0,
-                                 max_value = 50, value = 0, step = 1)
+    data_lokasi = np.array(df["LOKASI"])
+    lokasi_sorted = np.unique(data_lokasi)    
+    lokasi_val = sd_bar.selectbox(label = "LOKASI", options = lokasi_sorted, index = 0)
 
-    ttldaymnts_val = sd_bar.slider(label = "Total day minutes", min_value = 6,
-                                 max_value = 352, value = 6, step = 1)
+    data_waktu = np.array(df["KATEGORI WAKTU"])
+    waktu_sorted = np.unique(data_waktu)    
+    waktu_val = sd_bar.selectbox(label = "KATEGORI WAKTU", options = waktu_sorted, index = 0)
 
-    ttlevemnts_val = sd_bar.slider(label = "Total evening minutes", min_value = 38,
-                                 max_value = 360, value = 38, step = 1)
-
-    ttlnghtmnts_val = sd_bar.slider(label = "Total night minutes", min_value = 51,
-                                 max_value = 337, value = 51, step = 1)
-
-    ttlintlmnts_val = sd_bar.slider(label = "Total international minutes", min_value = 0,
-                                 max_value = 18, value = 0, step = 1)
-
-    ttlintlcalls_val = sd_bar.slider(label = "Total international calls", min_value = 0,
-                                 max_value = 16, value = 0, step = 1)
-
-    numcustcalls_val = sd_bar.slider(label = "Number of customer service calls", min_value = 0,
-                                 max_value = 7, value = 0, step = 1)
-
+    data_utang = np.array(df["NILAI UTANG"])
+    utang_sorted = np.unique(data_utang)    
+    utang_val = sd_bar.selectbox(label = "NILAI UTANG", options = utang_sorted, index = 0)
 
     # define Orange domain
-    state = Orange.data.DiscreteVariable("state",[state_val])
-    international_plan = Orange.data.DiscreteVariable("international_plan",[intplan_val])
-    voice_mail_plan = Orange.data.DiscreteVariable("voice_mail_plan",[voiceplan_val])
-    number_vmail_messages = Orange.data.ContinuousVariable("number_vmail_messages")
-    total_day_minutes = Orange.data.ContinuousVariable("total_day_minutes")
-    total_eve_minutes = Orange.data.ContinuousVariable("total_eve_minutes")
-    total_night_minutes = Orange.data.ContinuousVariable("total_night_minutes")
-    total_intl_minutes = Orange.data.ContinuousVariable("total_intl_minutes")
-    total_intl_calls = Orange.data.ContinuousVariable("total_intl_calls")
-    number_customer_service_calls = Orange.data.ContinuousVariable("number_customer_service_calls")
-
-    domain = Orange.data.Domain([state, international_plan, voice_mail_plan, number_vmail_messages,
-                                 total_day_minutes, total_eve_minutes, total_night_minutes,
-                                 total_intl_minutes, total_intl_calls, number_customer_service_calls]) 
+    pp = Orange.data.DiscreteVariable("LEMBAGA (PENYERAH PIUTANG)",[pp_val])
+    lokasi = Orange.data.DiscreteVariable("LOKASI",[lokasi_val])
+    waktu = Orange.data.DiscreteVariable("KATEGORI WAKTU",[waktu_val])
+    utang = Orange.data.DiscreteVariable("NILAI UTANG",[utang_val])
+    domain = Orange.data.Domain([pp,lokasi,waktu,utang]) 
 
     # input values X
-    X = np.array([[0,0,0,numvmailmsgs_val,ttldaymnts_val,ttlevemnts_val,ttlnghtmnts_val,
-                   ttlintlmnts_val,ttlintlcalls_val,numcustcalls_val]])
+    X = np.array([[pp_val,lokasi_val,waktu_val,utang_val]])
 
     # in this format, the data is now ready to be fed to StackModel
     user_input = Orange.data.Table(domain, X)
