@@ -85,7 +85,8 @@ def get_user_input():
     utang = Orange.data.DiscreteVariable("UTANG",[utang_val])
 
 
-    domain = Orange.data.Domain([pp,lokasi,waktu,utang]) 
+    #domain = Orange.data.Domain([pp,lokasi,waktu,utang]) 
+    domain = Orange.data.Domain(["A","I","U","E"]) 
 
     # input values X
     X = np.array([[pp_val,lokasi_val,waktu_val,utang_val]])
