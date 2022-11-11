@@ -63,7 +63,7 @@ def get_user_input():
     df = get_data()
     #st.markdown(list(df.columns))
 
-    data_pp = np.array(df["penyerah_piutang"])
+    data_pp = np.array(df["PENYERAH_PIUTANG"])
     pp_sorted = np.unique(data_pp)    
     pp_val = sd_bar.selectbox(label = "PENYERAH_PIUTANG", options = pp_sorted, index = 0)
 
