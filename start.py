@@ -113,14 +113,14 @@ with header_cont:
 ###########################   DATASET  ##################################
 
     
-with dataset_cont:
-    st.markdown("## Dataset")
-    st.markdown("The ML model was trained on the dataset below (adopted from [Applied Predictive Modeling](https://link.springer.com/book/10.1007/978-1-4614-6849-3)). "
-             "The last column (churn) is the target showing whether the customer unsubscribed from the service (yes) or not (no).")
-    df = get_data()
-    df = df.drop("Unnamed: 0", axis=1)
-    
-    st.dataframe(df)
+#with dataset_cont:
+#    st.markdown("## Dataset")
+#    st.markdown("The ML model was trained on the dataset below (adopted from [Applied Predictive Modeling](https://link.springer.com/book/10.1007/978-1-4614-6849-3)). "
+#             "The last column (churn) is the target showing whether the customer unsubscribed from the service (yes) or not (no).")
+#    df = get_data()
+#    df = df.drop("Unnamed: 0", axis=1)
+#    
+#    st.dataframe(df)
 
 
 
@@ -129,27 +129,12 @@ with dataset_cont:
     
 with features_cont:
     st.markdown("## Features")
-    st.markdown("There are 19 input features in this dataset: ")
-    st.markdown("(1) state, (2) account_length, (3) area_code, (4) international_plan, (5) voice_mail_plan, "
-                "(6) number_vmail_messages, (7) total_day_minutes, (8) total_day_calls, (9) total_day_charge, "
-                "(10) total_eve_minutes, (11) total_eve_calls, (12) total_eve_charge, (13) total_night_minutes, "
-                "(14) total_night_calls, (15) total_night_charge, (16) total_intl_minutes, (17) total_intl_calls, "
-                "(18) total_intl_charge, and (19) number_customer_service_calls.")
-    
     st.markdown("However, after training the ML model only the following 10 features were identified as "
                 "relevant for making predictions:")
     st.markdown("(1) **state** - the US home state of the customer")
     st.markdown("(2) **international_plan** - indicates whether the customer has international plan or not")
     st.markdown("(3) **voice_mail_plan** - indicates whether the customer has voice mail plan or not")
     st.markdown("(4) **number_vmail_messages** - number of voice mail messages made by the customer")
-    st.markdown("(5) **total_day_minutes** - total number of minutes made by the customer during day")
-    st.markdown("(6) **total_eve_minutes** - total number of minutes made by the customer during evening")
-    st.markdown("(7) **total_night_minutes** - total number of minutes made by the customer during night")
-    st.markdown("(8) **total_intl_minutes** - total number of minutes made by the customer on international calls")
-    st.markdown("(9) **total_intl_calls** - total number of international calls made by the customer")
-    st.markdown("(10) **number_customer_service_calls** - number of calls to the customer service team made")
-
-
 
 
 #############################   MODEL PREDICTION   #########################
@@ -166,17 +151,10 @@ with modelPrediction_cont:
 
     with left_col:
         st.markdown("### Input")
-        st.write("state:  ", df_userinput[0,0])
-        st.write("international plan:  ", df_userinput[0,1])
-        st.write("voice mail plan:  ", df_userinput[0,2])
-        st.write("number vmail messages:  ", df_userinput[0,3])
-        st.write("total day minutes:  ", df_userinput[0,4])
-        st.write("total eve minutes:  ", df_userinput[0,5])
-        st.write("total night minutes:  ", df_userinput[0,6])
-        st.write("total intl minutes:  ", df_userinput[0,7])
-        st.write("total intl calls:  ", df_userinput[0,8])
-        st.write("number customer service calls:  ", df_userinput[0,9])
-
+        st.write("1:  ", df_userinput[0,0])
+        st.write("2:  ", df_userinput[0,1])
+        st.write("3:  ", df_userinput[0,2])
+        st.write("4:  ", df_userinput[0,3])
     
     probs = loaded_model(df_userinput[0], 1)
     prob_no = probs[0]
