@@ -32,7 +32,7 @@ modelPrediction_cont = st.container()
 
 # StackModel contains Pre-processing pipeline (made on the training dataset)
 # + Model (with its parameters & hyperparameters)
-with open("StackModel.pkcls","rb") as model:
+with open("model.pkcls","rb") as model:
     loaded_model = pickle.load(model)
 
 
@@ -42,7 +42,7 @@ with open("StackModel.pkcls","rb") as model:
 
 @st.cache
 def get_data():
-    df = pd.read_csv("ChurnTrain.csv")
+    df = pd.read_csv("data.csv")
     return df
 
 
@@ -51,7 +51,7 @@ def get_data():
 
 
 with sd_bar:
-    st.markdown("## User Input (Existing Customers)")
+    st.markdown("## Prediksi Potensi BKPN")
 
 
 
