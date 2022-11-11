@@ -89,7 +89,7 @@ def get_user_input():
     loe = [[pp_val, lokasi_val, waktu_val, utang_val]]
 
     # in this format, the data is now ready to be fed to StackModel
-    user_input = Orange.data.Table.from_domain(domain, loe)
+    user_input = Orange.data.Table(domain, loe)
     return user_input;
 
 
