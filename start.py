@@ -100,8 +100,12 @@ df_userinput = get_user_input()
     
 with header_cont:
     st.markdown("# Prediksi Potensi BKPN pada Kanwil DJKN Papua, Papua Barat, dan Maluku")
-    st.markdown("Prediksi ini merupakan implementasi penggunaan machine learning secara sederhana.")
-    st.markdown(df_userinput)
+    st.markdown("Prediksi ini merupakan implementasi penggunaan machine learning secara sederhana."
+                "Tujuannya untuk menentukan apakah BKPN dikategorikan sebagai BKPN Potensial atau Tidak Potensial."
+                "BKPN Potensial artinya BKPN yang berdasarkan data historis dengan karakteristik serupa, berpotensi pelunasan."
+		    "BKPN Tidak potensial yaitu yang berdasarkan data historis, cenderung berakhir PSBDT."
+                "Silahkan gunakan kolom input di sebelah kiri untuk melakukan prediksi." 
+               )
 
 
 
