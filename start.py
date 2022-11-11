@@ -61,7 +61,7 @@ with sd_bar:
 def get_user_input():
 
     df = get_data()
-    data_pp = np.array(df["LEMBAGA (PENYERAH PIUTANG)"])
+    data_pp = np.array(df["PENYERAH_PIUTANG"])
     pp_sorted = np.unique(data_pp)    
     pp_val = sd_bar.selectbox(label = "PENYERAH_PIUTANG", options = pp_sorted, index = 0)
 
@@ -69,11 +69,11 @@ def get_user_input():
     lokasi_sorted = np.unique(data_lokasi)    
     lokasi_val = sd_bar.selectbox(label = "LOKASI", options = lokasi_sorted, index = 0)
 
-    data_waktu = np.array(df["KATEGORI WAKTU"])
+    data_waktu = np.array(df["WAKTU"])
     waktu_sorted = np.unique(data_waktu)    
     waktu_val = sd_bar.selectbox(label = "WAKTU", options = waktu_sorted, index = 0)
 
-    data_utang = np.array(df["NILAI UTANG"])
+    data_utang = np.array(df["UTANG"])
     utang_sorted = np.unique(data_utang)    
     utang_val = sd_bar.selectbox(label = "UTANG", options = utang_sorted, index = 0)
 
