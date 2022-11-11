@@ -124,7 +124,7 @@ df_userinput = get_user_input()
 
     
 with header_cont:
-    st.markdown("# Telecom Customer Churn")
+    st.markdown("# Prediksi Potensi Berkas Kasus Piutang Negara pada Kanwil DJKN Papua, Papua Barat, dan Maluku")
     st.markdown("This is a web app for a Machine Learning (ML) model trained and tested in [Orange Data Mining software] (https://orangedatamining.com/). The model "
             "predicts customer churn in telecom industry.")
 
