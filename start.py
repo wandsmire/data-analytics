@@ -123,8 +123,8 @@ with dataset_cont:
 
     
 with features_cont:
-    st.markdown("## Fitur")
-    st.markdown("Empat fitur ini digunakan untuk melakukan prediksi BKPN potensial:")
+    st.markdown("## Variabel")
+    st.markdown("Empat variabel ini digunakan untuk melakukan prediksi BKPN potensial:")
     st.markdown("(1) **Penyerah Piutang** - Kementerian/Lembaga penyerah piutang,")
     st.markdown("(2) **Lokasi Debitur** - Lokasi debitur apakah di dalam atau di luar kota KPKNL,")
     st.markdown("(3) **Umur BKPN** - Berapa lama BKPN diurus oleh KPKNL, dan")
