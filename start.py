@@ -84,11 +84,11 @@ def get_user_input():
     waktu = Orange.data.DiscreteVariable("WAKTU",[waktu_val])
     utang = Orange.data.DiscreteVariable("UTANG",[utang_val])
 
-
     domain = Orange.data.Domain([pp,lokasi,waktu,utang]) 
 
     # in this format, the data is now ready to be fed to StackModel
-    user_input = Orange.data.Table(domain)
+    user_input = Table.from_domain(domain)
+
 
     return user_input
 
