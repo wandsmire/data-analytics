@@ -61,14 +61,7 @@ with sd_bar:
 def get_user_input():
 
     df = get_data()
-    print("The DataFrame :")
-    display(df.head())
- 
-    # multiple ways of getting column names as list
-    print("\nThe column headers :")
-    print("Column headers from list(df.columns.values):", list(df.columns.values))
-    print("Column headers from list(df):", list(df))
-    print("Column headers from list(df.columns):", list(df.columns))
+    st.markdown(list(df.columns))
 
 
     #data_pp = np.array(df["penyerah_piutang"])
