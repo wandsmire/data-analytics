@@ -87,7 +87,7 @@ def get_user_input():
     domain = Orange.data.Domain([pp,lokasi,waktu,utang]) 
 
     # in this format, the data is now ready to be fed to StackModel
-    user_input = Table.from_domain(domain)
+    user_input = Orange.data.Table.from_domain(domain)
 
 
     return user_input
