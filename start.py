@@ -113,14 +113,14 @@ with header_cont:
 ###########################   DATASET  ##################################
 
     
-#with dataset_cont:
-#    st.markdown("## Dataset")
-#    st.markdown("The ML model was trained on the dataset below (adopted from [Applied Predictive Modeling](https://link.springer.com/book/10.1007/978-1-4614-6849-3)). "
-#             "The last column (churn) is the target showing whether the customer unsubscribed from the service (yes) or not (no).")
-#    df = get_data()
+with dataset_cont:
+    st.markdown("## Dataset")
+    st.markdown("The ML model was trained on the dataset below (adopted from [Applied Predictive Modeling](https://link.springer.com/book/10.1007/978-1-4614-6849-3)). "
+             "The last column (churn) is the target showing whether the customer unsubscribed from the service (yes) or not (no).")
+    df = get_data()
 #    df = df.drop("Unnamed: 0", axis=1)
 #    
-#    st.dataframe(df)
+    st.dataframe(df)
 
 
 
