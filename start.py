@@ -99,7 +99,7 @@ df_userinput = get_user_input()
 
     
 with header_cont:
-    st.markdown("# Prediksi Potensi Berkas Kasus Piutang Negara pada Kanwil DJKN Papua, Papua Barat, dan Maluku")
+    st.markdown("# Prediksi Potensi BKPN pada Kanwil DJKN Papua, Papua Barat, dan Maluku")
     st.markdown("Prediksi ini merupakan implementasi penggunaan machine learning secara sederhana.")
     st.markdown(df_userinput)
 
@@ -110,8 +110,7 @@ with header_cont:
     
 with dataset_cont:
     st.markdown("## Dataset")
-    st.markdown("The ML model was trained on the dataset below (adopted from [Applied Predictive Modeling](https://link.springer.com/book/10.1007/978-1-4614-6849-3)). "
-             "The last column (churn) is the target showing whether the customer unsubscribed from the service (yes) or not (no).")
+    st.markdown("Model machine learning ini dilatih menggunakan data sebagai berikut.")
     df = get_data()
     df.drop(df.columns[[2, 3]], axis=1, inplace=True)
     st.dataframe(df)
@@ -121,24 +120,20 @@ with dataset_cont:
 
     
 with features_cont:
-    st.markdown("## Features")
-    st.markdown("However, after training the ML model only the following 10 features were identified as "
-                "relevant for making predictions:")
-    st.markdown("(1) **state** - the US home state of the customer")
-    st.markdown("(2) **international_plan** - indicates whether the customer has international plan or not")
-    st.markdown("(3) **voice_mail_plan** - indicates whether the customer has voice mail plan or not")
-    st.markdown("(4) **number_vmail_messages** - number of voice mail messages made by the customer")
+    st.markdown("## Fitur")
+    st.markdown("Empat fitur ini digunakan untuk melakukan prediksi BKPN potensial:")
+    st.markdown("(1) **Penyerah Piutang** - Kementerian/Lembaga penyerah piutang,")
+    st.markdown("(2) **Lokasi** - Lokasi debitur apakah di dalam atau di luar kota KPKNL,")
+    st.markdown("(3) **Kategori Waktu** - Berapa lama BKPN diurus oleh KPKNL, dan")
+    st.markdown("(4) **Nilai Utang** - Besaran nilai utang masing-masing debitur.")
 
 
 #############################   MODEL PREDICTION   #########################
 
     
 with modelPrediction_cont:
-    st.markdown("## Model Prediction")
-    st.markdown("The ML model is a Stack consisting of Gradient Boosting and Random Forest "
-            "classifiers with a Logistic Regression acting as an aggregate. To make a prediction "
-            "with the model, you need to select values for the 10 features by using the "
-            "options and sliders in the sidebar on the left.")
+    st.markdown("## Model yang digunakan")
+    st.markdown("Model yang digunakan adalah Naive bayes, setelah dilakukan validasi silang dengan model random forest dan kNN. Dengan dataset ini, Model Naive Bayes mempunyai keakuratan tertinggi").
 
     left_col, right_col = st.columns(2)
 
@@ -155,15 +150,15 @@ with modelPrediction_cont:
         
     with right_col:
     
-        st.markdown("### Prediction Probabilities")
-        st.markdown("Given the data on the left, the "
-                "probability this customer will not churn, i.e. churn, is:")
-        st.write("churn (no): ", round(prob_no*100, 1), "%")
-        st.write("churn (yes): ", round(prob_yes*100,1), "%")
+        st.markdown("### Probabilitas Prediksi")
+        st.markdown("Berdasarkan data di sebelah kiri, maka "
+                "kemmungkinan BKPN ini potensial adalah:")
+        st.write("tidak potensial: ", round(prob_no*100, 1), "%")
+        st.write("potensial: ", round(prob_yes*100,1), "%")
 
-        st.markdown("### Prediction")
+        st.markdown("### Prediksi")
         if prob_no>prob_yes:
-            st.markdown("This customer will **_not_** churn.")
+            st.markdown("BKPN ini **_tidak potensial_**.")
         else:
-            st.markdown("This customer **_will_** churn.")
+            st.markdown("BKPN ini **_potensial_**.")
         
