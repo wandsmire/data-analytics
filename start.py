@@ -144,12 +144,12 @@ with modelPrediction_cont:
 
     with left_col:
         st.markdown("### Input")
-        st.write("PENYERAH_PIUTANG:  ", df_userinput[0,0])
-        st.write("2:  ", df_userinput[0,1])
-        st.write("3:  ", df_userinput[0,2])
-        st.write("4:  ", df_userinput[0,3])
+        st.write("Penyerah Piutang:  ", df_userinput[0,0])
+        st.write("Lokasi:  ", df_userinput[0,1])
+        st.write("Kategori Waktu:  ", df_userinput[0,2])
+        st.write("Jumlah Utang:  ", df_userinput[0,3])
     
-    probs = loaded_model(df[0], 1)
+    probs = loaded_model(df_userinput[0], 1)
     prob_no = probs[0]
     prob_yes = probs[1]
         
