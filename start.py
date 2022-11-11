@@ -42,7 +42,7 @@ with open("model.pkcls","rb") as model:
 
 @st.cache
 def get_data():
-    df = pd.read_csv("datax.csv")
+    df = pd.read_csv("data.csv")
     return df
 
 
@@ -61,21 +61,26 @@ with sd_bar:
 def get_user_input():
 
     df = get_data()
-    data_pp = np.array(df["PENYERAH_PIUTANG"])
-    pp_sorted = np.unique(data_pp)    
-    pp_val = sd_bar.selectbox(label = "PENYERAH_PIUTANG", options = pp_sorted, index = 0)
+    #data_pp = np.array(df["PENYERAH_PIUTANG"])
+    #pp_sorted = np.unique(data_pp)    
+    #pp_val = sd_bar.selectbox(label = "PENYERAH_PIUTANG", options = pp_sorted, index = 0)
 
-    data_lokasi = np.array(df["LOKASI"])
-    lokasi_sorted = np.unique(data_lokasi)    
-    lokasi_val = sd_bar.selectbox(label = "LOKASI", options = lokasi_sorted, index = 0)
+    #data_lokasi = np.array(df["LOKASI"])
+    #lokasi_sorted = np.unique(data_lokasi)    
+    #lokasi_val = sd_bar.selectbox(label = "LOKASI", options = lokasi_sorted, index = 0)
 
-    data_waktu = np.array(df["WAKTU"])
-    waktu_sorted = np.unique(data_waktu)    
-    waktu_val = sd_bar.selectbox(label = "WAKTU", options = waktu_sorted, index = 0)
+    #data_waktu = np.array(df["WAKTU"])
+    #waktu_sorted = np.unique(data_waktu)    
+    #waktu_val = sd_bar.selectbox(label = "WAKTU", options = waktu_sorted, index = 0)
 
-    data_utang = np.array(df["UTANG"])
-    utang_sorted = np.unique(data_utang)    
-    utang_val = sd_bar.selectbox(label = "UTANG", options = utang_sorted, index = 0)
+    #data_utang = np.array(df["UTANG"])
+    #utang_sorted = np.unique(data_utang)    
+    #utang_val = sd_bar.selectbox(label = "UTANG", options = utang_sorted, index = 0)
+
+    pp_val = sd_bar.selectbox(label = "Penyerah Piutang", options = ["no", "yes"], index = 0)
+    lokasi_val = sd_bar.selectbox(label = "Penyerah Piutang", options = ["no", "yes"], index = 0)
+    waktu_val = sd_bar.selectbox(label = "Penyerah Piutang", options = ["no", "yes"], index = 0)
+    utang_val = sd_bar.selectbox(label = "Penyerah Piutang", options = ["no", "yes"], index = 0)
 
     # define Orange domain
     pp = Orange.data.DiscreteVariable("PENYERAH_PIUTANG",[pp_val])
