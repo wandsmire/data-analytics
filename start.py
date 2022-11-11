@@ -158,12 +158,12 @@ with modelPrediction_cont:
         st.markdown("### Probabilitas Prediksi")
         st.markdown("Berdasarkan data di sebelah kiri, maka "
                 "kemmungkinan BKPN ini potensial adalah:")
-        st.write("tidak potensial: ", round(prob_no*100, 1), "%")
-        st.write("potensial: ", round(prob_yes*100,1), "%")
+        st.write("potensial: ", round(prob_no*100, 1), "%")
+        st.write("tidak potensial: ", round(prob_yes*100,1), "%")
 
         st.markdown("### Prediksi")
         if prob_no>prob_yes:
-            st.markdown("BKPN ini **_tidak potensial_**.")
-        else:
             st.markdown("BKPN ini **_potensial_**.")
+        else:
+            st.markdown("BKPN ini **_tidak potensial_**.")
         
