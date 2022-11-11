@@ -142,8 +142,8 @@ with modelPrediction_cont:
     left_col, right_col = st.columns(2)
 
     with left_col:
-    df = get_data()
-    df.drop(df.columns[[2, 3]], axis=1, inplace=True)
+        df = get_data()
+        df.drop(df.columns[[2, 3]], axis=1, inplace=True)
         st.markdown("### Input")
         st.write("PENYERAH_PIUTANG:  ", df[0,0])
         st.write("2:  ", df[0,1])
