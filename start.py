@@ -90,13 +90,10 @@ def get_user_input():
     # in this format, the data is now ready to be fed to StackModel
     user_input = Orange.data.Table(domain)
 
-    #return user_input
+    return user_input
 
 
 df_userinput = get_user_input()
-
-df = df.append({"A","B","C","D"}, ignore_index=True)  
-
 
 ###########################  HEADER  ##################################
 
