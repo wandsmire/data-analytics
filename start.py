@@ -143,8 +143,7 @@ with modelPrediction_cont:
 
     with left_col:
         st.markdown("### Input")
-        #st.write("1:  ", "AKO")
-        st.write("1:  ", df[0,0])
+        st.write("PENYERAH_PIUTANG:  ", df[0,0])
         st.write("2:  ", df[0,1])
         st.write("3:  ", df[0,2])
         st.write("4:  ", df[0,3])
