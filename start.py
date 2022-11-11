@@ -64,19 +64,19 @@ def get_user_input():
 
     data_pp = np.array(df["PENYERAH_PIUTANG"])
     pp_sorted = np.unique(data_pp)    
-    pp_val = sd_bar.selectbox(label = "PENYERAH_PIUTANG", options = pp_sorted, index = 0)
+    pp_val = sd_bar.selectbox(label = "Penyerah Piutang", options = pp_sorted, index = 0)
 
     data_lokasi = np.array(df["LOKASI"])
     lokasi_sorted = np.unique(data_lokasi)    
-    lokasi_val = sd_bar.selectbox(label = "LOKASI", options = lokasi_sorted, index = 0)
+    lokasi_val = sd_bar.selectbox(label = "Lokasi Debitur", options = lokasi_sorted, index = 0)
 
     data_waktu = np.array(df["WAKTU"])
     waktu_sorted = np.unique(data_waktu)    
-    waktu_val = sd_bar.selectbox(label = "WAKTU", options = waktu_sorted, index = 0)
+    waktu_val = sd_bar.selectbox(label = "Umur BKPN", options = waktu_sorted, index = 0)
 
     data_utang = np.array(df["UTANG"])
     utang_sorted = np.unique(data_utang)    
-    utang_val = sd_bar.selectbox(label = "UTANG", options = utang_sorted, index = 0)
+    utang_val = sd_bar.selectbox(label = "Jumlah Utang", options = utang_sorted, index = 0)
 
     # define Orange domain
     pp = Orange.data.DiscreteVariable("PENYERAH_PIUTANG",[pp_val])
@@ -126,9 +126,9 @@ with features_cont:
     st.markdown("## Fitur")
     st.markdown("Empat fitur ini digunakan untuk melakukan prediksi BKPN potensial:")
     st.markdown("(1) **Penyerah Piutang** - Kementerian/Lembaga penyerah piutang,")
-    st.markdown("(2) **Lokasi** - Lokasi debitur apakah di dalam atau di luar kota KPKNL,")
-    st.markdown("(3) **Kategori Waktu** - Berapa lama BKPN diurus oleh KPKNL, dan")
-    st.markdown("(4) **Nilai Utang** - Besaran nilai utang masing-masing debitur.")
+    st.markdown("(2) **Lokasi Debitur** - Lokasi debitur apakah di dalam atau di luar kota KPKNL,")
+    st.markdown("(3) **Umur BKPN** - Berapa lama BKPN diurus oleh KPKNL, dan")
+    st.markdown("(4) **Jumlah Utang** - Besaran nilai utang masing-masing debitur.")
 
 
 #############################   MODEL PREDICTION   #########################
@@ -136,17 +136,17 @@ with features_cont:
     
 with modelPrediction_cont:
     st.markdown("## Model yang digunakan")
-    st.markdown("Model yang digunakan adalah Naive bayes."
-                "setelah dilakukan validasi silang dengan model random forest dan kNN."
-                "Dengan dataset ini, Model Naive Bayes mempunyai keakuratan tertinggi")
+    st.markdown("Model yang digunakan adalah Naive Bayes. "
+                "Model ini dipilih setelah dilakukan validasi silang dengan model Random Forest dan kNN."
+                "Dengan dataset ini, Model Naive Bayes mempunyai keakuratan tertinggi.")
 
     left_col, right_col = st.columns(2)
 
     with left_col:
         st.markdown("### Input")
         st.write("Penyerah Piutang:  ", df_userinput[0,0])
-        st.write("Lokasi:  ", df_userinput[0,1])
-        st.write("Kategori Waktu:  ", df_userinput[0,2])
+        st.write("Lokasi Debitur:  ", df_userinput[0,1])
+        st.write("Umur BKPN:  ", df_userinput[0,2])
         st.write("Jumlah Utang:  ", df_userinput[0,3])
     
     probs = loaded_model(df_userinput[0], 1)
