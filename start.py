@@ -84,15 +84,17 @@ def get_user_input():
     lokasi = Orange.data.DiscreteVariable("LOKASI",[lokasi_val])
     waktu = Orange.data.DiscreteVariable("WAKTU",[waktu_val])
     utang = Orange.data.DiscreteVariable("UTANG",[utang_val])
+
+
     domain = Orange.data.Domain([pp,lokasi,waktu,utang]) 
 
     # input values X
-    X = np.array([pp_val,lokasi_val,waktu_val,utang_val])
+    X = np.array([[pp_val,lokasi_val,waktu_val,utang_val]])
 
     # in this format, the data is now ready to be fed to StackModel
     user_input = Orange.data.Table(domain, X)
 
-    return user_input
+    #return user_input
 
 
 df_userinput = get_user_input()
