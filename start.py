@@ -78,9 +78,9 @@ def get_user_input():
     #utang_val = sd_bar.selectbox(label = "UTANG", options = utang_sorted, index = 0)
 
     pp_val = sd_bar.selectbox(label = "Penyerah Piutang", options = ["no", "yes"], index = 0)
-    lokasi_val = sd_bar.selectbox(label = "Penyerah Piutang", options = ["no", "yes"], index = 0)
-    waktu_val = sd_bar.selectbox(label = "Penyerah Piutang", options = ["no", "yes"], index = 0)
-    utang_val = sd_bar.selectbox(label = "Penyerah Piutang", options = ["no", "yes"], index = 0)
+    lokasi_val = sd_bar.selectbox(label = "Lokasi", options = ["no", "yes"], index = 0)
+    waktu_val = sd_bar.selectbox(label = "Waktu", options = ["no", "yes"], index = 0)
+    utang_val = sd_bar.selectbox(label = "Utang", options = ["no", "yes"], index = 0)
 
     # define Orange domain
     pp = Orange.data.DiscreteVariable("PENYERAH_PIUTANG",[pp_val])
