@@ -109,7 +109,7 @@ with header_cont:
     
 with dataset_cont:
     st.markdown("## Dataset")
-    st.markdown("Model machine learning ini dilatih menggunakan data sebagai berikut.")
+    st.markdown("Model machine learning ini dilatih menggunakan data historis BKPN pada Kanwil DJKN Papua, Papua Barat, dan Maluku sebagai berikut.")
     df = get_data()
     #df.drop(df.columns[[5]], axis=1, inplace=True)
     st.dataframe(df)
