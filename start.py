@@ -193,4 +193,4 @@ with modelPrediction_cont:
         st.markdown("Silahkan segera lakukan penagihan kepada debitur, karena semakin lama umur BKPN akan semakin sulit dilakukan penagihan.")
     else:
         st.markdown("Lakukan kegiatan-kegiatan untuk meningkatkan daya tagih misalnya dengan tracking identitas debitur. "
-                   "Jika memang sudah tidak bisa lagi ditagih, lakukan proses pemeriksaan dilanjutkandengan PSBDT.")
+                   "Jika memang sudah tidak bisa lagi ditagih, lakukan proses pemeriksaan dilanjutkan dengan PSBDT.")
