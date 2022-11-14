@@ -68,25 +68,20 @@ def get_user_input():
     utang_sorted = np.unique(data_utang)    
     utang_val = sd_bar.selectbox(label = "Nilai SP3N", options = utang_sorted, index = 0)
 
-    data_bayar = np.array(df["ADA_PEMBAYARAN"])
-    bayar_sorted = np.unique(data_bayar)    
-    bayar_val = sd_bar.selectbox(label = "Ada Pembayaran?", options = bayar_sorted, index = 0)
-
     data_jamin = np.array(df["ADA_JAMINAN"])
     jamin_sorted = np.unique(data_jamin)    
-    jamin_val = sd_bar.selectbox(label = "Nilai SP3N", options = jamin_sorted, index = 0)
+    jamin_val = sd_bar.selectbox(label = "Ada Jaminan?", options = jamin_sorted, index = 0)
 
     # define Orange domain
     pp = Orange.data.DiscreteVariable("PENYERAH_PIUTANG",[pp_val])
     lokasi = Orange.data.DiscreteVariable("LOKASI",[lokasi_val])
     waktu = Orange.data.DiscreteVariable("WAKTU",[waktu_val])
     utang = Orange.data.DiscreteVariable("UTANG",[utang_val])
-    bayar = Orange.data.DiscreteVariable("ADA_PEMBAYARAN",[bayar_val])
     jamin = Orange.data.DiscreteVariable("ADA_JAMINAN",[jamin_val])
 
-    domain = Orange.data.Domain([pp,lokasi,waktu,utang,bayar,jamin]) 
+    domain = Orange.data.Domain([pp,lokasi,waktu,utang,jamin]) 
 
-    loe = [[pp_val, lokasi_val, waktu_val, utang_val,bayar_val,jamin_val]]
+    loe = [[pp_val, lokasi_val, waktu_val, utang_val,jamin_val]]
 
     # in this format, the data is now ready to be fed to Model
     user_input = Orange.data.Table(domain, loe)
@@ -128,8 +123,7 @@ with features_cont:
     st.markdown("(2) **Lokasi Debitur** - Lokasi debitur apakah di dalam atau di luar kota KPKNL,")
     st.markdown("(3) **Umur BKPN** - Berapa lama BKPN diurus oleh KPKNL,")
     st.markdown("(4) **Jumlah Utang** - Besaran nilai utang masing-masing debitur.")
-    st.markdown("(5) **Keberadaan Pembayaran** - Apakah pernah ada pembayaran, dan")
-    st.markdown("(6) **Keberadaan Barang Jaminan** - Apakah ada barang jaminan.")
+    st.markdown("(5) **Keberadaan Barang Jaminan** - Apakah ada barang jaminan.")
 
 
 #############################   MODEL PREDICTION   #########################
@@ -151,8 +145,7 @@ with modelPrediction_cont:
         st.write("Lokasi Debitur:  ", df_userinput[0,1])
         st.write("Umur BKPN:  ", df_userinput[0,2])
         st.write("Jumlah Utang:  ", df_userinput[0,3])
-        st.write("Ada Pembayaran:  ", df_userinput[0,4])
-        st.write("Ada Jaminan:  ", df_userinput[0,5])
+        st.write("Ada Jaminan:  ", df_userinput[0,4])
     
     probs = loaded_model(df_userinput[0], 1)
     prob_no = probs[0]
