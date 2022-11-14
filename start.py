@@ -25,9 +25,6 @@ features_cont = st.container()
 # Container for Model Prediction
 modelPrediction_cont = st.container()
 
-# Container for Tindak Lanjut
-tindaklanjut_cont = st.container()
-
 
 ######################  Load the model  ########################
 
@@ -156,7 +153,8 @@ with modelPrediction_cont:
     st.markdown("Model yang digunakan adalah Naive Bayes. "
                 "Model ini dipilih setelah dilakukan validasi silang dengan melakukan testing atas model yang telah di_training_. "
 		    "Selain itu juga telah dibandingkan keakuratannya dengan model Random Forest dan kNN. "
-                "Dengan _dataset_ ini, Model Naive Bayes mempunyai keakuratan tertinggi.")
+                "Dengan _dataset_ ini, Model Naive Bayes mempunyai keakuratan tertinggi. "
+                "Pemodelan dibuat dengan menggunakan aplikasi Orange Data Mining. Sedangkan implementasi dibuat menggunakan Streamlit dengan bahasa pemrograman Python.")
 
     left_col, right_col = st.columns(2)
 
