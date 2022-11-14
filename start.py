@@ -123,7 +123,7 @@ with features_cont:
     st.markdown("(1) **Penyerah Piutang** - Kementerian/Lembaga penyerah piutang,")
     st.markdown("(2) **Lokasi Debitur** - Lokasi debitur apakah di dalam atau di luar kota KPKNL,")
     st.markdown("(3) **Umur BKPN** - Berapa lama BKPN diurus oleh KPKNL,")
-    st.markdown("(4) **Nilai SP3N** - Besaran nilai utang masing-masing debitur saat diterbitkan SP3N.")
+    st.markdown("(4) **Nilai SP3N** - Besaran nilai utang masing-masing debitur saat diterbitkan SP3N, dan")
     st.markdown("(5) **Keberadaan Barang Jaminan** - Apakah ada barang jaminan.")
 
 
