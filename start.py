@@ -110,7 +110,7 @@ with dataset_cont:
     st.markdown("## Dataset")
     st.markdown("Model machine learning ini dilatih menggunakan data sebagai berikut.")
     df = get_data()
-    #df.drop(df.columns[[2, 3]], axis=1, inplace=True)
+    df.drop(df.columns[[5]], axis=1, inplace=True)
     st.dataframe(df)
 
 #########   FEATURES  ##################################
