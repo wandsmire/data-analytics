@@ -4,9 +4,6 @@ import pickle
 import pandas as pd
 import numpy as np
 
-
-
-
 #########################  CONTAINERS  ##############################
 
 
@@ -27,24 +24,17 @@ modelPrediction_cont = st.container()
 
 
 
-######################  Load the Stack model  ########################
+######################  Load the model  ########################
 
-
-# StackModel contains Pre-processing pipeline (made on the training dataset)
-# + Model (with its parameters & hyperparameters)
 with open("model.pkcls","rb") as model:
     loaded_model = pickle.load(model)
 
-
-
-########################  CACHE FUNCTION  #############################
-
+########################  Load the data  #############################
 
 #@st.cache
 def get_data():
     df = pd.read_csv("datax.csv")
     return df
-
 
 
 ########################## SIDEBAR ###################################
@@ -53,14 +43,14 @@ def get_data():
 with sd_bar:
     st.markdown("## Prediksi Potensi BKPN")
 
-
-
 ###################  Extract input from the user  #####################
 
 
 def get_user_input():
 
     df = get_data()
+
+################update this for variable changes.
 
     data_pp = np.array(df["PENYERAH_PIUTANG"])
     pp_sorted = np.unique(data_pp)    
@@ -70,28 +60,37 @@ def get_user_input():
     lokasi_sorted = np.unique(data_lokasi)    
     lokasi_val = sd_bar.selectbox(label = "Lokasi Debitur", options = lokasi_sorted, index = 0)
 
-    data_waktu = np.array(df["WAKTU"])
+    data_waktu = np.array(df["UMUR_BKPN"])
     waktu_sorted = np.unique(data_waktu)    
     waktu_val = sd_bar.selectbox(label = "Umur BKPN", options = waktu_sorted, index = 0)
 
-    data_utang = np.array(df["UTANG"])
+    data_utang = np.array(df["NILAI_SP3N"])
     utang_sorted = np.unique(data_utang)    
-    utang_val = sd_bar.selectbox(label = "Jumlah Utang", options = utang_sorted, index = 0)
+    utang_val = sd_bar.selectbox(label = "Nilai SP3N", options = utang_sorted, index = 0)
+
+    data_bayar = np.array(df["ADA_PEMBAYARAN"])
+    bayar_sorted = np.unique(data_bayar)    
+    bayar_val = sd_bar.selectbox(label = "Ada Pembayaran?", options = bayar_sorted, index = 0)
+
+    data_jamin = np.array(df["ADA_JAMINAN"])
+    jamin_sorted = np.unique(data_jamin)    
+    jamin_val = sd_bar.selectbox(label = "Nilai SP3N", options = jamin_sorted, index = 0)
 
     # define Orange domain
     pp = Orange.data.DiscreteVariable("PENYERAH_PIUTANG",[pp_val])
     lokasi = Orange.data.DiscreteVariable("LOKASI",[lokasi_val])
     waktu = Orange.data.DiscreteVariable("WAKTU",[waktu_val])
     utang = Orange.data.DiscreteVariable("UTANG",[utang_val])
+    bayar = Orange.data.DiscreteVariable("ADA_PEMBAYARAN",[bayar_val])
+    jamin = Orange.data.DiscreteVariable("ADA_JAMINAN",[jamin_val])
 
-    domain = Orange.data.Domain([pp,lokasi,waktu,utang]) 
+    domain = Orange.data.Domain([pp,lokasi,waktu,utang,bayar,jamin]) 
 
-    loe = [[pp_val, lokasi_val, waktu_val, utang_val]]
+    loe = [[pp_val, lokasi_val, waktu_val, utang_val,bayar_val,jamin_val]]
 
-    # in this format, the data is now ready to be fed to StackModel
+    # in this format, the data is now ready to be fed to Model
     user_input = Orange.data.Table(domain, loe)
     return user_input;
-
 
 df_userinput = get_user_input()
 
@@ -116,19 +115,21 @@ with dataset_cont:
     st.markdown("## Dataset")
     st.markdown("Model machine learning ini dilatih menggunakan data sebagai berikut.")
     df = get_data()
-    df.drop(df.columns[[2, 3]], axis=1, inplace=True)
+    #df.drop(df.columns[[2, 3]], axis=1, inplace=True)
     st.dataframe(df)
 
 #########   FEATURES  ##################################
 
-    
+################update this for display only.
 with features_cont:
     st.markdown("## Variabel")
     st.markdown("Empat variabel ini digunakan untuk melakukan prediksi BKPN potensial:")
     st.markdown("(1) **Penyerah Piutang** - Kementerian/Lembaga penyerah piutang,")
     st.markdown("(2) **Lokasi Debitur** - Lokasi debitur apakah di dalam atau di luar kota KPKNL,")
-    st.markdown("(3) **Umur BKPN** - Berapa lama BKPN diurus oleh KPKNL, dan")
+    st.markdown("(3) **Umur BKPN** - Berapa lama BKPN diurus oleh KPKNL,")
     st.markdown("(4) **Jumlah Utang** - Besaran nilai utang masing-masing debitur.")
+    st.markdown("(5) **Keberadaan Pembayaran** - Apakah pernah ada pembayaran, dan")
+    st.markdown("(6) **Keberadaan Barang Jaminan** - Apakah ada barang jaminan.")
 
 
 #############################   MODEL PREDICTION   #########################
@@ -142,12 +143,16 @@ with modelPrediction_cont:
 
     left_col, right_col = st.columns(2)
 
+################update this for display only.
+
     with left_col:
         st.markdown("### Input")
         st.write("Penyerah Piutang:  ", df_userinput[0,0])
         st.write("Lokasi Debitur:  ", df_userinput[0,1])
         st.write("Umur BKPN:  ", df_userinput[0,2])
         st.write("Jumlah Utang:  ", df_userinput[0,3])
+        st.write("Ada Pembayaran:  ", df_userinput[0,4])
+        st.write("Ada Jaminan:  ", df_userinput[0,5])
     
     probs = loaded_model(df_userinput[0], 1)
     prob_no = probs[0]
