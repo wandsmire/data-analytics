@@ -100,8 +100,8 @@ df_userinput = get_user_input()
     
 with header_cont:
     st.markdown("# Prediksi Potensi BKPN pada Kanwil DJKN Papua, Papua Barat, dan Maluku")
-    st.markdown("Prediksi ini merupakan implementasi penggunaan machine learning secara sederhana. "
-                "Tujuannya untuk menentukan apakah BKPN dikategorikan sebagai BKPN Potensial atau Tidak Potensial. "
+    st.markdown("Prediksi ini merupakan implementasi penggunaan _machine learning_ secara sederhana. "
+                "Tujuannya untuk menentukan apakah BKPN dikategorikan sebagai BKPN **Potensial** atau **Tidak Potensial**. "
                 "BKPN Potensial artinya BKPN yang berdasarkan data historis dengan karakteristik serupa, berpotensi pelunasan. "
 		    "BKPN Tidak potensial yaitu yang berdasarkan data historis, cenderung berakhir PSBDT. "
                 "Silahkan gunakan kolom input di sebelah kiri untuk melakukan prediksi." 
@@ -112,8 +112,8 @@ with header_cont:
 
     
 with business_cont:
-    st.markdown("## Business Understanding")
-    st.markdown("Untuk menentukan variabel yang digunakan, dilakukan kegiatan wawancara dengan praktisi di bidang pengurusan piutang negara. "
+    st.markdown("## _Business Understanding_")
+    st.markdown("Untuk menentukan variabel-variabel yang digunakan, dilakukan kegiatan wawancara dengan praktisi di bidang pengurusan piutang negara. "
                 "Adapun faktor-faktor yang dinilai dapat mempengaruhi lunas atau tidaknya suatu BKPN adalah sebagai berikut: "
                 "Penyerah Piutang, Lokasi Debitur, Umur BKPN, Nilai SP3N, Keberadaan Barang Jaminan, Keberadaan Pembayaran, dan Kelengkapan Identitas Debitur."
                )
@@ -124,11 +124,11 @@ with business_cont:
 
     
 with dataset_cont:
-    st.markdown("## Dataset")
+    st.markdown("## _Dataset_")
     st.markdown("Data yang digunakan adalah data historis BKPN pada Kanwil DJKN Papua, Papua Barat, dan Maluku."
-                "Data ini sudah dilakukan preprocessing yaitu: data yang tidak lengkap dihapus, BKPN perbankan dan BPJS dikeluarkan karena tidak relevan, "
+                "Data ini sudah dilakukan _preprocessing_ yaitu: data yang tidak lengkap dihapus, BKPN perbankan dan BPJS dikeluarkan karena tidak relevan, "
                 "dan mata uang difilter hanya Rupiah saja. "  
-                "Adapun data hasil preprocessing sebagai berikut:")
+                "Adapun data hasil _preprocessing_ sebagai berikut:")
     df = get_data()
     #df.drop(df.columns[[5]], axis=1, inplace=True)
     st.dataframe(df)
@@ -137,7 +137,7 @@ with dataset_cont:
 
 ################update this for display only.
 with features_cont:
-    st.markdown("## Variabel")
+    st.markdown("## Variabel-variabel")
     st.markdown("Lima variabel ini digunakan untuk melakukan prediksi BKPN potensial:")
     st.markdown("(1) **Penyerah Piutang** - Kementerian/Lembaga penyerah piutang,")
     st.markdown("(2) **Lokasi Debitur** - Lokasi debitur apakah di dalam atau di luar kota KPKNL,")
@@ -145,7 +145,7 @@ with features_cont:
     st.markdown("(4) **Nilai SP3N** - Besaran nilai utang masing-masing debitur saat diterbitkan SP3N, dan")
     st.markdown("(5) **Keberadaan Barang Jaminan** - Apakah ada barang jaminan.")
     st.markdown("Variabel yang dikeluarkan:")
-    st.markdown("(1) **Keberadaan Pembayaran** - dikeluarkan karena menyebabkan overfitting, dan")
+    st.markdown("(1) **Keberadaan Pembayaran** - dikeluarkan karena menyebabkan _overfitting_, dan")
     st.markdown("(2) **Kelengkapan Identitas Debitur** - dikeluarkan karena data tidak tersedia.")
 
 #############################   MODEL PREDICTION   #########################
@@ -154,9 +154,9 @@ with features_cont:
 with modelPrediction_cont:
     st.markdown("## Model yang digunakan")
     st.markdown("Model yang digunakan adalah Naive Bayes. "
-                "Model ini dipilih setelah dilakukan validasi silang dengan melakukan testing atas model yang telah ditraining. "
+                "Model ini dipilih setelah dilakukan validasi silang dengan melakukan testing atas model yang telah di_training_. "
 		    "Selain itu juga telah dibandingkan keakuratannya dengan model Random Forest dan kNN. "
-                "Dengan dataset ini, Model Naive Bayes mempunyai keakuratan tertinggi.")
+                "Dengan _dataset_ ini, Model Naive Bayes mempunyai keakuratan tertinggi.")
 
     left_col, right_col = st.columns(2)
 
@@ -192,5 +192,5 @@ with modelPrediction_cont:
     if prob_no>prob_yes:
         st.markdown("Silahkan segera lakukan penagihan kepada debitur, karena semakin lama umur BKPN akan semakin sulit dilakukan penagihan.")
     else:
-        st.markdown("Lakukan kegiatan-kegiatan untuk meningkatkan daya tagih misalnya dengan tracking identitas debitur. "
+        st.markdown("Lakukan kegiatan-kegiatan untuk meningkatkan daya tagih misalnya dengan _tracking_ identitas debitur. "
                    "Jika memang sudah tidak bisa lagi ditagih, lakukan proses pemeriksaan dilanjutkan dengan PSBDT.")
