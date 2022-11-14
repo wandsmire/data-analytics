@@ -188,8 +188,9 @@ with modelPrediction_cont:
         else:
             st.markdown("BKPN ini **_tidak potensial_**.")
         
-    st.columns(1)
-    st.markdown("## Tindak lanjut")
+        st.columns(1)
+        st.markdown("## Tindak lanjut")
+        
         if prob_no>prob_yes:
             st.markdown("Silahkan segera lakukan penagihan kepada debitur, karena semakin lama umur BKPN akan semakin sulit dilakukan penagihan.")
         else:
