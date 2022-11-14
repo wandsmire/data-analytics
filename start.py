@@ -162,6 +162,10 @@ with modelPrediction_cont:
 
 ################update this for display only.
 
+    probs = loaded_model(df_userinput[0], 1)
+    prob_no = probs[0]
+    prob_yes = probs[1]
+
     with left_col:
         st.markdown("### Input")
         st.write("Penyerah Piutang:  ", df_userinput[0,0])
@@ -169,11 +173,7 @@ with modelPrediction_cont:
         st.write("Umur BKPN:  ", df_userinput[0,2])
         st.write("Nilai SP3N:  ", df_userinput[0,3])
         st.write("Barang Jaminan:  ", df_userinput[0,4])
-    
-    probs = loaded_model(df_userinput[0], 1)
-    prob_no = probs[0]
-    prob_yes = probs[1]
-        
+            
     with right_col:
     
         st.markdown("### Probabilitas Prediksi")
@@ -191,8 +191,8 @@ with modelPrediction_cont:
         st.columns(1)
         st.markdown("## Tindak lanjut")
         
-        if prob_no>prob_yes:
-            st.markdown("Silahkan segera lakukan penagihan kepada debitur, karena semakin lama umur BKPN akan semakin sulit dilakukan penagihan.")
-        else:
-            st.markdown("Lakukan kegiatan-kegiatan untuk meningkatkan daya tagih misalnya dengan tracking identitas debitur. "
-			      "Jika memang sudah tidak bisa lagi ditagih, lakukan proses pemeriksaan dilanjutkandengan PSBDT.")
+    if prob_no>prob_yes:
+        st.markdown("Silahkan segera lakukan penagihan kepada debitur, karena semakin lama umur BKPN akan semakin sulit dilakukan penagihan.")
+    else:
+        st.markdown("Lakukan kegiatan-kegiatan untuk meningkatkan daya tagih misalnya dengan tracking identitas debitur. "
+                   "Jika memang sudah tidak bisa lagi ditagih, lakukan proses pemeriksaan dilanjutkandengan PSBDT.")
