@@ -133,7 +133,8 @@ with features_cont:
 with modelPrediction_cont:
     st.markdown("## Model yang digunakan")
     st.markdown("Model yang digunakan adalah Naive Bayes. "
-                "Model ini dipilih setelah dilakukan validasi silang data training dan data testing. Selain itu juga telah dibandingkan keakuratannya dengan model Random Forest dan kNN. "
+                "Model ini dipilih setelah dilakukan validasi silang dengan melakukan testing atas model yang telah ditraining. "
+		    "Selain itu juga telah dibandingkan keakuratannya dengan model Random Forest dan kNN. "
                 "Dengan dataset ini, Model Naive Bayes mempunyai keakuratan tertinggi.")
 
     left_col, right_col = st.columns(2)
