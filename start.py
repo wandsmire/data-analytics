@@ -146,8 +146,8 @@ with modelPrediction_cont:
         st.write("Penyerah Piutang:  ", df_userinput[0,0])
         st.write("Lokasi Debitur:  ", df_userinput[0,1])
         st.write("Umur BKPN:  ", df_userinput[0,2])
-        st.write("Jumlah Utang:  ", df_userinput[0,3])
-        st.write("Ada Jaminan:  ", df_userinput[0,4])
+        st.write("Nilai SP3N:  ", df_userinput[0,3])
+        st.write("Barang Jaminan:  ", df_userinput[0,4])
     
     probs = loaded_model(df_userinput[0], 1)
     prob_no = probs[0]
@@ -157,7 +157,7 @@ with modelPrediction_cont:
     
         st.markdown("### Probabilitas Prediksi")
         st.markdown("Berdasarkan data di sebelah kiri, maka "
-                "kemmungkinan BKPN ini potensial adalah:")
+                "kemungkinan BKPN ini potensial adalah:")
         st.write("potensial: ", round(prob_no*100, 1), "%")
         st.write("tidak potensial: ", round(prob_yes*100,1), "%")
 
