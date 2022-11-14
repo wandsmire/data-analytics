@@ -25,6 +25,8 @@ features_cont = st.container()
 # Container for Model Prediction
 modelPrediction_cont = st.container()
 
+# Container for Tindak Lanjut
+tindaklanjut_cont = st.container()
 
 
 ######################  Load the model  ########################
@@ -186,3 +188,13 @@ with modelPrediction_cont:
         else:
             st.markdown("BKPN ini **_tidak potensial_**.")
         
+#############################   TINDAK LANJUT   #########################
+
+    
+with tindaklanjut_cont:
+    st.markdown("## Tindak lanjut")
+        if prob_no>prob_yes:
+            st.markdown("Silahkan segera lakukan penagihan kepada debitur, karena semakin lama umur BKPN akan semakin sulit dilakukan penagihan.")
+        else:
+            st.markdown("Lakukan kegiatan-kegiatan untuk meningkatkan daya tagih misalnya dengan tracking identitas debitur. "
+			      "Jika memang sudah tidak bisa lagi ditagih, lakukan proses pemeriksaan dilanjutkandengan PSBDT.")
