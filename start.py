@@ -13,6 +13,9 @@ sd_bar = st.sidebar
 # Container for the Header
 header_cont = st.container()
 
+# Container for Business Understanding
+business_cont = st.container()
+
 # Container for the Dataset
 dataset_cont = st.container()
 
@@ -103,13 +106,27 @@ with header_cont:
                )
 
 
+###########################  BUSINESS UNDERSTANDING  ##################################
+
+    
+with business_cont:
+    st.markdown("## Business Understanding")
+    st.markdown("Untuk menentukan variabel yang digunakan, dilakukan kegiatan wawancara dengan praktisi di bidang pengurusan piutang negara. "
+                "Adapun faktor-faktor yang dinilai dapat mempengaruhi lunas atau tidaknya suatu BKPN adalah sebagai berikut: "
+                "Penyerah Piutang, Lokasi Debitur, Umur BKPN, Nilai SP3N, Keberadaan Barang Jaminan, Keberadaan Pembayaran, dan Kelengkapan Identitas Debitur."
+               )
+
+
 
 ###########################   DATASET  ##################################
 
     
 with dataset_cont:
     st.markdown("## Dataset")
-    st.markdown("Model machine learning ini dilatih menggunakan data historis BKPN pada Kanwil DJKN Papua, Papua Barat, dan Maluku sebagai berikut:")
+    st.markdown("Data yang digunakan adalah data historis BKPN pada Kanwil DJKN Papua, Papua Barat, dan Maluku."
+                "Data ini sudah dilakukan preprocessing yaitu: data yang tidak lengkap dihapus, BKPN perbankan dan BPJS dikeluarkan karena tidak relevan, "
+                "dan mata uang difilter hanya Rupiah saja. "  
+                "Adapun data hasil preprocessing sebagai berikut:")
     df = get_data()
     #df.drop(df.columns[[5]], axis=1, inplace=True)
     st.dataframe(df)
@@ -125,7 +142,9 @@ with features_cont:
     st.markdown("(3) **Umur BKPN** - Berapa lama BKPN diurus oleh KPKNL,")
     st.markdown("(4) **Nilai SP3N** - Besaran nilai utang masing-masing debitur saat diterbitkan SP3N, dan")
     st.markdown("(5) **Keberadaan Barang Jaminan** - Apakah ada barang jaminan.")
-
+    st.markdown("Variabel yang dikeluarkan:")
+    st.markdown("(1) **Keberadaan Pembayaran** - dikeluarkan karena menyebabkan overfitting, dan")
+    st.markdown("(2) **Kelengkapan Identitas Debitur** - dikeluarkan karena data tidak tersedia.")
 
 #############################   MODEL PREDICTION   #########################
 
