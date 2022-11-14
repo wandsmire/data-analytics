@@ -52,6 +52,7 @@ def get_user_input():
 
 ################update this for variable changes.
 
+    #untuk bagian DF harus sesuai dengan nama kolom pada CSV!	
     data_pp = np.array(df["PENYERAH_PIUTANG"])
     pp_sorted = np.unique(data_pp)    
     pp_val = sd_bar.selectbox(label = "Penyerah Piutang", options = pp_sorted, index = 0)
@@ -72,11 +73,11 @@ def get_user_input():
     jamin_sorted = np.unique(data_jamin)    
     jamin_val = sd_bar.selectbox(label = "Ada Jaminan?", options = jamin_sorted, index = 0)
 
-    # define Orange domain
+    # define Orange domain, untuk nama variabel harus sesuai dengan di orange.
     pp = Orange.data.DiscreteVariable("PENYERAH_PIUTANG",[pp_val])
     lokasi = Orange.data.DiscreteVariable("LOKASI",[lokasi_val])
-    waktu = Orange.data.DiscreteVariable("WAKTU",[waktu_val])
-    utang = Orange.data.DiscreteVariable("UTANG",[utang_val])
+    waktu = Orange.data.DiscreteVariable("UMUR_BKPN",[waktu_val])
+    utang = Orange.data.DiscreteVariable("NILAI_SP3N",[utang_val])
     jamin = Orange.data.DiscreteVariable("ADA_JAMINAN",[jamin_val])
 
     domain = Orange.data.Domain([pp,lokasi,waktu,utang,jamin]) 
@@ -118,7 +119,7 @@ with dataset_cont:
 ################update this for display only.
 with features_cont:
     st.markdown("## Variabel")
-    st.markdown("Empat variabel ini digunakan untuk melakukan prediksi BKPN potensial:")
+    st.markdown("Lima variabel ini digunakan untuk melakukan prediksi BKPN potensial:")
     st.markdown("(1) **Penyerah Piutang** - Kementerian/Lembaga penyerah piutang,")
     st.markdown("(2) **Lokasi Debitur** - Lokasi debitur apakah di dalam atau di luar kota KPKNL,")
     st.markdown("(3) **Umur BKPN** - Berapa lama BKPN diurus oleh KPKNL,")
